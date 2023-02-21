@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Home</title>
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        .myDiv{
+            width:100%;
+            border: 5px outset red;
+            background-color: lightblue;
+            text-align: center;
+            }
+        .sidebar{
+        text-align: center;
+        }
+
+        table,th,td{
+            border: 1px solid black;
+        }
+        ul {
+            width:100%;
+            
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color:lightblue;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color:black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="http://127.0.0.1:5000/manager-home">Home</a></li>
+        <li><a href="welcome.html">Login Page</a></li>
+    </ul>
+ 
+        <div class="myDiv">
+            <h2>ORDER INFORMATION DETAILS </h2>
+        </div>
+
+
+    <div>
+        <h3>Order Transaction Table</h3>
+        <table style="width:100%">
+            <tr>
+               <th>trans_id </th>
+               <th>trans_type</th>
+               <th>trans_value</th>
+               <th>comm_type</th>
+               <th>comm_amount</th>
+               <th>client_id </th>
+               <th>trader_id </th>
+               <th>timestamp </th>
+            </tr>
+            {%for i in r%}
+                <tr>
+                    <td>{{i[0]}}</td>
+                    <td>{{i[1]}}</td>
+                    <td>{{i[2]}}</td>
+                    <td>{{i[3]}}</td>
+                    <td>{{i[4]}}</td>
+                    <td>{{i[5]}}</td>
+                    <td>{{i[6]}}</td>
+                    <td>{{i[7]}}</td>
+                </tr>
+            {%endfor%}
+
+        </table>
+    </div><br><br><br><br>
+    <div>
+        <h3>Payments Table</h3>
+        <table style="width:100%">
+            <tr>
+               <th>payment_id </th>
+               <th>client_id</th>
+               <th>trader_id</th>
+               <th>payment_status</th>
+               <th>payment_amount</th>
+               <th>timestamp</th>
+            </tr>
+            {%for j in p%}
+                <tr>
+                    <td>{{j[0]}}</td>
+                    <td>{{j[1]}}</td>
+                    <td>{{j[2]}}</td>
+                    <td>{{j[3]}}</td>
+                    <td>{{j[4]}}</td>
+                    <td>{{j[5]}}</td>
+                </tr>
+            {%endfor%}
+
+        </table>
+    </div>
+</body>
+</html>

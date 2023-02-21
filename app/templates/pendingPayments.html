@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<h1 style="text-align:center;">Pending deposits</h1>
+    {% if pendingDeposits != None %}
+      <hr class="intro-divider">
+      <div class="row" style="height: 360px; overflow: auto">
+        <table class="table">
+          <thead>
+            <tr>
+              <th width="20%"> Order ID </th>
+              <th width="20%"> Client ID </th>
+              <th width="20%"> Amount </th>
+              <th width="15%"> Approve </th>
+              <th width="15%"> Cancel </th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for pendingDeposit in pendingDeposits %}
+            <tr>
+              <td> {{ pendingDeposit[0] }} </td>
+              <td> {{ pendingDeposit[1]}} </td>
+              <td> {{ pendingDeposit[4] }} </td>
+              <td>
+                <a href="{{ url_for('traderAction_deposit', action='Approve', pid=pendingDeposit[0]) }}">
+                  <i class="fa fa-check"></i><span class="label label-success">Approve</span>
+                </a>
+              </td>
+              <td>
+                <a href="{{ url_for('traderAction_deposit', action='Cancel', pid=pendingDeposit[0]) }}">
+                  <i class="fa fa-close"></i><span class="label label-danger">Cancel</span>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div style="text-align: center">
+    {% else %}
+      <div style="text-align: center">
+        <h3>No pending deposits</h3>
+        <hr class="intro-divider">
+      </div>
+      </div>
+    {% endif %}
+
+
+
+</body>
+</html>
